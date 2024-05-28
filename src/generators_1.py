@@ -10,7 +10,7 @@
 #
 # Пример вывода:
 # 939719570
-# 142264268
+# 142264268 Должны выводиться только id транзакций и всё
 
 # Пример словаря, для которого должны работать функции:
 # это список словарей, в которых есть "ключ-значения" одинарные и плюс есть
@@ -69,7 +69,40 @@ transactions = (
 
 # напишем эту функцию:
 
-def filter_currency()
+def filter_currency(dict_curr: list, currency: str):
+    for i in dict_curr:
+        if i['operationAmount']['currency']['code'] == currency:
+            yield i.get('id')
+
+#присваиваем новой переменной генератор:
+transact_gen = filter_currency(transactions, 'RUB')
+
+#напишем функцию для определения количества транзакций с заданной валютой
+def number_of_trans(dict_curr: list, currency: str):
+    list_count_trans: list = []
+    count = 0
+    for j in dict_curr:
+        if j['operationAmount']['currency']['code'] == currency:
+            if j['operationAmount']['currency']['code'] not in list_count_trans:
+                list_count_trans.append(j)
+                count += 1
+            else:
+                pass
+        else:
+            pass
+    list_count_trans = []
+    return count
+
+print(f'Количество транзакций с такой валютой: {number_of_trans(transactions, 'RUB')}')
+
+#выводим на печать результат расчета функции с помощью цикла for и аргумента кол-ва
+#транзакций, полученных с помощью доп. функции number_of_trans()
+# сразу скажу: этот цикл - вспомогательный, и его можно было и не писать вовсе, поэтому он
+# и требует изменения вручную валюты в трех местах. Но вообще конечно можно просто запрашивать
+# от пользователя ввод валюты и передавать этот ввод во все функции
+
+for i in range(number_of_trans(transactions, 'RUB')):
+    print(next(transact_gen))
 
 
 
