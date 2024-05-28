@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "for-corrections-10-2"
+version = "0.1.0"
+description = ""
+authors = ["Al_Pl <asuspitsyn@mail.ru>"]
+readme = "README.md"
+packages = [{include = "for_corrections_10"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[tool.poetry.group.lint.dependencies]
+black = "^24.4.2"
+flake8 = "^7.0.0"
+mypy = "^1.10.0"
+isort = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
