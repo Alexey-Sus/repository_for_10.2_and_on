@@ -69,8 +69,8 @@ transactions = (
 
 # напишем эту функцию:
 
-def filter_currency(dict_curr: list, currency: str):
-    for i in dict_curr:
+def filter_currency(list_curr: list, currency: str):
+    for i in list_curr:
         if i['operationAmount']['currency']['code'] == currency:
             yield i.get('id')
 
@@ -78,10 +78,10 @@ def filter_currency(dict_curr: list, currency: str):
 transact_gen = filter_currency(transactions, 'RUB')
 
 #напишем функцию для определения количества транзакций с заданной валютой
-def number_of_trans(dict_curr: list, currency: str):
+def number_of_trans(list_curr: list, currency: str):
     list_count_trans: list = []
     count = 0
-    for j in dict_curr:
+    for j in list_curr:
         if j['operationAmount']['currency']['code'] == currency:
             if j['operationAmount']['currency']['code'] not in list_count_trans:
                 list_count_trans.append(j)
