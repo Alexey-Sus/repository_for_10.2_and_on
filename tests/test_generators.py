@@ -82,6 +82,7 @@ def test_transact_gen():
 
 # тестируем генератор второй функции
 def test_gen_descr_trans():
+    '''Тестовая функция для тестирования функции-генератора, которая выводит описание транзакций по запросу'''
     gen_descr_trans = trans_descr(transactions)
     assert next(gen_descr_trans) == "Перевод организации"
     assert next(gen_descr_trans) == "Перевод со счета на счет"
@@ -95,6 +96,7 @@ def test_gen_descr_trans():
 
 
 def test_card_number_gen():
+    '''Тестовая функция для тестирования функции, генерирующей номера карт'''
     # определяем специальный генератор для этой функции
     gen_for_card_number_gen = card_number_gen("20", 25)
     assert next(gen_for_card_number_gen) == "XXXX XXXX XXXX XX20"

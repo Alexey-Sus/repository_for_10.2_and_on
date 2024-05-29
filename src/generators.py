@@ -142,7 +142,7 @@ def trans_descr(list_curr):
     for i in list_curr:
         yield i["description"]
 
-
+# проверяем работу этой функции с помощью генератора
 gen_descr_trans = trans_descr(transactions)
 print(next(gen_descr_trans))
 print(next(gen_descr_trans))
@@ -168,11 +168,11 @@ print(next(gen_descr_trans))
 
 print()
 
-# start = input("Ввод начала диапазона номеров карт: ")
-# stop = int(input("...и окончания диапазона: "))
+start = input("Ввод начала диапазона номеров карт: ")
+stop = int(input("...и окончания диапазона: "))
 
-start = '20'
-stop = 25
+# start = "20"
+# stop = 25 - это для случая, когда мы хотим просто проверить функцию с жестко заданными значениями
 
 
 def card_number_gen(start: str, stop: int):
