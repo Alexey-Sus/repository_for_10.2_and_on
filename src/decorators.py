@@ -25,7 +25,9 @@ def log_parameters(ppp):
                 message = f"{function.__name__} ok Result: {result}\n"
                 return result
             except Exception as exc:
-                message = (f"{function.__name__} {type(exc).__name__}. Inputs: {args} {kwargs}")
+                message = (
+                    f"{function.__name__} {type(exc).__name__}. Inputs: {args} {kwargs}"
+                )
 
             finally:
                 if ppp:
@@ -45,7 +47,8 @@ ttt = "my_log.txt"
 
 @log_parameters(ttt)
 def my_function(x, y):
-    '''Здесь определяем саму ту функцию, которая у нас будет делать действия'''
+    """Здесь определяем саму ту функцию, которая у нас будет делать действия"""
     return x + y
+
 
 my_function(1, 2)
