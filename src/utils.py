@@ -1,43 +1,63 @@
 import json
 import os.path
+from src.external_api import get_exch_rate
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+KEY_API = os.getenv("API_KEY")
+
 
 def fin_oper_data(file_to_input: str) -> list:
-    '''Функция принимает на вход путь до JSON-файла и возвращает список
-    словарей с данными о финансовых операциях'''
+    """Функция принимает на вход путь до JSON-файла и возвращает список
+    словарей с данными о финансовых операциях. Если файла такого нет, либо он пустой или содержит
+    не данные в формате list, возвращаем пустой список"""
     if os.path.isfile(file_to_input):
         with open(file_to_input, encoding="utf-8") as file:
             try:
                 new_list = json.load(file)
             except ValueError:
-                new_list = [' ', 'данные не являются объектом или массивом, либо файл пустой']
+                new_list = []
     else:
-        new_list = [' ', 'такой файл не найден']
+        new_list = []
+
     return new_list
 
-print(fin_oper_data('../data/operations.json'))
-temp_var = fin_oper_data('../data/operations.json')
 
-# Реализуйте функцию, которая принимает на вход транзакцию и возвращает сумму транзакции (amount) в рублях,
-# тип данных — float. Если транзакция была в USD или EUR, происходит обращение к внешнему API
-# для получения текущего курса валют и конвертации суммы операции в рубли.
-# Для конвертации валюты воспользуйтесь Exchange Rates Data API: https://apilayer.com/exchangerates_data-api.
-# Функцию конвертации поместите в модуль external_api.
+# temp_var = fin_oper_data('../data/operations.json')
+# print(temp_var)
 
 # пишем функцию для возврата суммы транзакции в рублях
+# вводим тестовую временную переменную для работы этой функции - транзакцию с типом
+# данных dict, которую будем отправлять на вход функции
 
-def get_rub_amnt_for_trns(list_trans: list, id_trans: int) -> float:
-    amnt: float = 0.0
-    for i in list_trans:
-        if i['id'] == id_trans:
-            amnt = i['operationAmount']['amount']
-            curr = i['operationAmount']['currency']['code']
-            if curr == 'RUB':
-                result = amnt
-                break
-            else:
-                result = curr
-                break
+
+trans = {
+    "id": 41428829,
+    "state": "EXECUTED",
+    "date": "2019-07-03T18:35:29.512364",
+    "operationAmount": {
+        "amount": "8221.37",
+        "currency": {"name": "USD", "code": "USD"},
+    },
+    "description": "Перевод организации",
+    "from": "MasterCard 7158300734726758",
+    "to": "Счет 35383033474447895560",
+}
+
+
+def get_rub_amnt_for_trns(tran_n: dict) -> float:
+    """Функция возвращает сумму транзакции в рублях, если транзакция в рублях, и переводит сумму
+    транзакции в другой валюте (вызывая внутри себя другую функцию get_exch_rate) в сумму в рублях,
+    если вызывается транзакция в валюте"""
+    amnt = float(tran_n["operationAmount"]["amount"])
+    curr = tran_n["operationAmount"]["currency"]["code"]
+    if curr == "RUB":
+        result = amnt
+    else:
+        result = get_exch_rate(curr, "FAYTtDvjSMHYgYj3hS6q0SVqZ1PsGsSU") * amnt
     return result
 
-result_amnt = get_rub_amnt_for_trns(temp_var, int(input('Введите свою транзакцию: ')))
-print(result_amnt)
+
+# result_amnt = get_rub_amnt_for_trns(trans)
+# print(result_amnt)

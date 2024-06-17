@@ -1,43 +1,31 @@
 import requests
 import json
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+KEY_API = os.getenv("API_KEY")
 
 # здесь напишем (пишем) функцию, обращающуюся ко внешнему API и возвращающую
 # курс заданной валюты по отношению к рублю
 
-# # url = "https://api.apilayer.com/exchangerates_data/convert?to={to}&from={from}&amount={amount}"
-# url = "https://api.apilayer.com/exchangerates_data/convert?to=RUB&from=USD&amount=15000"
-#
-# # payload = {}
-# headers= {"apikey": "FAYTtDvjSMHYgYj3hS6q0SVqZ1PsGsSU"}
-#
-# # response = requests.request("GET", url, headers=headers, data = payload)
-#
-# response = requests.get(url, headers=headers)
-#
-# # status_code = response.status_code
-#
-# result = response.text
-# result_pyth = json.loads(result)
-# rate = result_pyth['info']['rate']
-#
-# print(rate)
-# print(result)
-# print(result_pyth)
-# print('Это разделительная строка')
 
-def get_exch_rate(curr: str) -> float:
-    headers:dict = {"apikey": "FAYTtDvjSMHYgYj3hS6q0SVqZ1PsGsSU"}
-    url_frmtted = "https://api.apilayer.com/exchangerates_data/convert?to=RUB&from=" + curr + "&amount=15000"
+def get_exch_rate(curr: str, my_api: str) -> float:
+    """Функция возвращает курс валюты по отношению к рублю, обращаясь к АПИ apilayer.com"""
+    headers: dict = {"apikey": my_api}
+    url_frmtted = (
+        "https://api.apilayer.com/exchangerates_data/convert?to=RUB&from="
+        + curr
+        + "&amount=15000"
+    )
 
     response = requests.get(url_frmtted, headers=headers)
     result_pyth = json.loads(response.text)
-
-    return result_pyth['info']['rate']
-
-print(get_exch_rate(input('Введите сюда, сюда введите, свою валюту: ')))
+    result = result_pyth["info"]["rate"]
+    return result
 
 
-
-
-
-
+# пишем строчки для проверки работы функции
+s_curr = input("Введите аббревиатуру своей валюты: ")
+new_api: str = KEY_API
+print(get_exch_rate(s_curr, new_api))
