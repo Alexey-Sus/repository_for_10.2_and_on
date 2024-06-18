@@ -21,7 +21,7 @@ def get_exch_rate(curr: str, my_api: str) -> float:
 
     response = requests.get(url_frmtted, headers=headers)
     result_pyth = json.loads(response.text)
-    result = result_pyth["info"]["rate"]
+    result = result_pyth["info"]["rate"]e
     return result
 
 
