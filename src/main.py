@@ -1,6 +1,8 @@
-from src.widget import get_date, mask_for_acc_card
+from src.decorators import my_function
+
 # from src.widget_addit import get_max_product, get_similar_char
 from src.processing import list_for_state, list_sort_date
+from src.widget import get_date, mask_for_acc_card
 
 # переменные для проверки основного задания
 date_for_ex = "2018-12-11T02:26:18.671407"
@@ -38,3 +40,5 @@ print()
 
 for i in list_for_state(list_orig):
     print(i)
+
+d = my_function(3, "")
