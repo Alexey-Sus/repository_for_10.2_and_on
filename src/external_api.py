@@ -21,11 +21,14 @@ def get_exch_rate(curr: str, my_api: str) -> float:
 
     response = requests.get(url_frmtted, headers=headers)
     result_pyth = json.loads(response.text)
-    result = result_pyth["info"]["rate"]e
-    return result
+    # result = result_pyth["info"]["rate"]
+    # return result
+    # вставляю временный вывод функции, потому что API у меня пока не работает
+    n = 10
+    return n
 
 
 # пишем строчки для проверки работы функции
 s_curr = input("Введите аббревиатуру своей валюты: ")
 new_api: str = KEY_API
-print(get_exch_rate(s_curr, new_api))
+# print(get_exch_rate(s_curr, new_api))
