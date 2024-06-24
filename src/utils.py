@@ -29,8 +29,8 @@ def fin_oper_data(file_to_input: str) -> list:
     if os.path.isfile(file_to_input):
         with open(file_to_input, encoding="utf-8") as file:
             try:
-                new_list = json.load(file)
-                s = len(new_list)
+                new_list: list = json.load(file)
+                s: int = len(new_list)
                 utils_logger.info(
                     f"The function has finished working and returned a list of {s} elements"
                 )
@@ -50,7 +50,7 @@ def fin_oper_data(file_to_input: str) -> list:
 
 
 # temp_var = fin_oper_data('../data/operations.json')
-temp_var = fin_oper_data("../data/88888.json")
+temp_var = fin_oper_data("../data/operations.json")
 print(temp_var)
 
 # пишем функцию для возврата суммы транзакции в рублях
@@ -92,5 +92,5 @@ def get_rub_amnt_for_trns(tran_n: dict) -> float:
     return result
 
 
-result_amnt = get_rub_amnt_for_trns(trans)
-print(result_amnt)
+# result_amnt = get_rub_amnt_for_trns(trans)
+# print(result_amnt)
