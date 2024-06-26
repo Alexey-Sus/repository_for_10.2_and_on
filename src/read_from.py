@@ -20,8 +20,8 @@ def read_from_csv(file_name: str) -> str:
         print(f"{exp}: Файл не найден")
         return []
 
-
-print(read_from_csv(file_to_use))
+#
+# print(read_from_csv(file_to_use))
 
 
 # запускаем функцию и выводим на печать:
