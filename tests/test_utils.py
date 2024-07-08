@@ -36,38 +36,3 @@ def test_fin_oper_data():
         assert result == mock_data
         assert result_no_file == []
 
-
-# теперь тестируем функцию get_rub_amnt_for_trns
-# Функция возвращает сумму транзакции в рублях, если транзакция в рублях, и переводит сумму
-# транзакции в другой валюте (вызывая внутри себя другую функцию get_exch_rate) в сумму в рублях,
-# если вызывается транзакция в валюте
-
-# закомментировал тест для функции get_rub_amnt_for_trns, так как, оказывается, его писать было не нужно,
-# да и не проходит он сейчас, потому как у меня сервис apilayer пишет, что превышен дневной и месячный
-# лимит на API
-
-# @patch("tran_n")
-# def test_get_rub_amnt_for_trns(mock_get):
-#     # создаем фиктивный mock-объект с нужным значением
-#     mock_get = MagicMock()
-#     mock_get.return_value = mock_get
-#
-#     # создаем тестовую переменную - один элемент списка - для тестирования в этой функции
-#     test_value_RUB = {
-#         "id": 441945886,
-#         "state": "EXECUTED",
-#         "date": "2019-08-26T10:50:58.294041",
-#         "operationAmount": {
-#             "amount": "31957.58",
-#             "currency": {"name": "руб.", "code": "RUB"},
-#         },
-#         "description": "Перевод организации",
-#         "from": "Maestro 1596837868705199",
-#         "to": "Счет 64686473678894779589",
-#     }
-#
-#     mock_get.value = test_value_RUB
-#     assert (
-#         get_rub_amnt_for_trns(test_value_RUB)
-#         == mock_get.value["operationAmount"]["amount"]
-#     )
