@@ -20,10 +20,12 @@ def read_from_csv(file_name: str) -> str:
         print(f"{exp}: Файл не найден")
         return []
 
+
+if __name__ == "__main__":
+    read_from_csv(file_to_use)
+
 #
 # print(read_from_csv(file_to_use))
-
-
 # запускаем функцию и выводим на печать:
 # print(read_from_csv(file_to_use))
 
@@ -42,6 +44,9 @@ def read_from_excel_2(file_name: str) -> list:
         print(f"{exp} Файл, видимо, не найден...")
         return []
 
+
+if __name__ == "__main__":
+    read_from_excel_2(file_to_use)
 
 # запустим эту функцию для проверки
 # print(read_from_excel_2('../data/transactions_excel.xlsx'))
