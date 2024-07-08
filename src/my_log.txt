@@ -1,0 +1,8 @@
+
+my_function ok Result: 3
+
+my_function TypeError. Inputs: (3, '') {}
+my_function ok Result: 3
+
+my_function ok Result: 3
+
