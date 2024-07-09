@@ -1,0 +1,43 @@
+my_function TypeError. Inputs: (1, '') {}
+my_function ok Result: 11
+
+my_function TypeError. Inputs: (1, '') {}
+my_function ok Result: 11
+
+my_function TypeError. Inputs: (1, '') {}
+my_function ok Result: 11
+
+my_function TypeError. Inputs: (5, '') {}
+my_function TypeError. Inputs: (1, '') {}
+my_function ok Result: 11
+
+my_function TypeError. Inputs: (5, '') {}
+my_function ok Result: 4
+
+my_function ok Result: 11
+
+my_function ok Result: 12
+
+my_function ok Result: 4
+
+my_function ok Result: 11
+
+my_function ok Result: 11
+
+my_function ok Result: 12
+
+my_function ok Result: 4
+
+my_function ok Result: 11
+
+my_function ok Result: 11
+
+my_function ok Result: 12
+
+my_function ok Result: 4
+
+my_function ok Result: 4
+
+func_with_error TypeError. Inputs: (7, '') {}
+my_function ok Result: 11
+
