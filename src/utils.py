@@ -49,15 +49,6 @@ def fin_oper_data(file_to_input: str) -> list:
     return new_list
 
 
-# temp_var = fin_oper_data('../data/operations.json')
-temp_var = fin_oper_data("../data/operations.json")
-print(temp_var)
-
-# пишем функцию для возврата суммы транзакции в рублях
-# вводим тестовую временную переменную для работы этой функции - транзакцию с типом
-# данных dict, которую будем отправлять на вход функции
-
-
 trans = {
     "id": 441945886,
     "state": "EXECUTED",
