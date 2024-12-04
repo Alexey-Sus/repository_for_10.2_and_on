@@ -29,6 +29,6 @@ def get_exch_rate(curr: str, my_api: str) -> float:
 
 
 # пишем строчки для проверки работы функции
-s_curr = input("Введите аббревиатуру своей валюты: ")
+# s_curr = input("Введите аббревиатуру своей валюты: ")
 new_api: str = KEY_API
 # print(get_exch_rate(s_curr, new_api))
